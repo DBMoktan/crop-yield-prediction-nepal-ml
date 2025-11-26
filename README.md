@@ -8,129 +8,89 @@ Agricultural productivity in Nepal is highly vulnerable to climate variability, 
 
 🎯 Objectives
 
-Build a supervised ML pipeline for crop yield prediction.
-
-Perform feature engineering to enhance predictive performance.
-
-Compare machine learning models and identify the best performer.
-
-Analyze feature importance for Nepal’s geographical context.
-
-Support policymakers and farmers with data-driven insights.
+* Build a supervised ML pipeline for crop yield prediction.
+* Perform feature engineering to enhance predictive performance.
+* Compare machine learning models and identify the best performer.
+* Analyze feature importance for Nepal’s geographical context.
+* Support policymakers and farmers with data-driven insights.
 
 Methodology
 1️⃣ Data Preprocessing
 
-Handling missing values
-
-Removing duplicates
-
-Outlier detection using IQR
-
-Encoding categorical variables
-
-Scaling numerical features
+* Handling missing values
+* Removing duplicates
+* Outlier detection using IQR
+* Encoding categorical variables
+* Scaling numerical features
 
 2️⃣ Feature Engineering
 
 Derived features added include:
-
-Temperature range
-
-Rainfall per area
-
-Fertilizer per area
-
-Solar radiation per area
-
-PAR per area
-
-Interaction features (e.g., temp × rainfall)
-
-Log transformations
+* Temperature range
+* Rainfall per area
+* Fertilizer per area
+* Solar radiation per area
+* PAR per area
+* Interaction features (e.g., temp × rainfall)
+* Log transformations
 
 3️⃣ Model Training
 
 The following models were trained and evaluated:
 
-Linear Regression, Ridge, Lasso
-
-Decision Tree
-
-Random Forest
-
-Gradient Boosting
-
-XGBoost
-
-LightGBM
-
-CatBoost
-
-Support Vector Regressor
-
-Stacking Regressor
+* Linear Regression, Ridge, Lasso
+* Decision Tree
+* Random Forest
+* Gradient Boosting
+* XGBoost
+* LightGBM
+* CatBoost
+* Support Vector Regressor
+* Stacking Regressor
 
 4️⃣ Hyperparameter Tuning
 
-Performed using GridSearchCV and K-Fold Cross-Validation.
+* Performed using GridSearchCV and K-Fold Cross-Validation.
 
 5️⃣ Model Evaluation
 
-Metrics used:
-
-MAE (Mean Absolute Error)
-
-MSE (Mean Squared Error)
-
-RMSE
-
-R² Score
+**Metrics used:**
+* MAE (Mean Absolute Error)
+* MSE (Mean Squared Error)
+* RMSE (Root Mean Squared Error)
+* R² Score
 
 📈 Key Results
 
-Stacking Regressor delivered the best overall performance.
-
-Feature engineering and scaling significantly improved model accuracy.
-
-Climate-related variables (temperature, rainfall, solar radiation) were the most influential.
-
-The model achieved R² ≈ 0.83, showing strong predictive capability.
+* Stacking Regressor delivered the best overall performance.
+* Feature engineering and scaling significantly improved model accuracy.
+* Climate-related variables (temperature, rainfall, solar radiation) were the most influential.
+* The model achieved R² ≈ 0.83, showing strong predictive capability.
 
 🌱 Agricultural Use Cases
 
-Early yield forecasting
+* Early yield forecasting
+* Resource optimization (fertilizer, irrigation)
+* Climate-risk assessment
+* District-level agricultural planning
+* Policy decisions for food security
 
-Resource optimization (fertilizer, irrigation)
+🧪 Libraries Used
 
-Climate-risk assessment
-
-District-level agricultural planning
-
-Policy decisions for food security
-
-🧪 Technologies Used
-
-Python
-
-Pandas, NumPy
-
-Scikit-learn
-
-XGBoost, LightGBM, CatBoost
-
-Matplotlib, Seaborn
-
-Joblib
+* Pandas, NumPy
+* Scikit-learn
+* XGBoost, LightGBM, CatBoost
+* Matplotlib, Seaborn
+* Joblib
 
 📜 License
 
-This project is licensed under the MIT License, allowing open use, modification, and distribution with attribution.
+* This project is licensed under the MIT License, allowing open use, modification, and distribution with attribution.
 
 🤝 Contribution
 
-Contributions, issues, and suggestions are welcome!
-Please open an issue or submit a pull request.
+* Contributions, issues, and suggestions are welcome!
+* Please open an issue or submit a pull request.
 
 👤 Author
 
