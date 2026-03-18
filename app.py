@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import joblib
 import plotly.express as px
 
 # --- App Configuration ---
@@ -108,10 +109,10 @@ elif page == "Yield Prediction":
         submit = st.form_submit_button("Predict Yield")
         
     if submit:
-        # Note: In a real scenario, load your saved model (e.g., model.pkl) using joblib or pickle
+        # Note: In a real scenario, we have to save model (e.g., model.pkl) using joblib or pickle
         # model = joblib.load('best_model.pkl')
         # prediction = model.predict(input_data)
         
         # Placeholder for actual prediction logic
         st.success("Data successfully submitted for prediction!")
-        st.info("💡 **Note to Developer:** To generate real predictions, load your trained `.pkl` model here using `joblib.load('model.pkl')`, format the user inputs into a DataFrame, and pass it to `model.predict(user_input_df)`.")
+        st.info("💡 **Note to Developer:** To generate real predictions, we have to train model `.pkl` model here using `joblib.load('model.pkl')`, format the user inputs into a DataFrame, and pass it to `model.predict(user_input_df)`. that we will do it later.")
