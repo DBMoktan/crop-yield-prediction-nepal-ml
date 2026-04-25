@@ -6,6 +6,7 @@ import joblib
 =======
 >>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
 import plotly.express as px
+import joblib
 
 # --- App Configuration ---
 st.set_page_config(page_title="Nepal Crop Yield Prediction", page_icon="🌾", layout="wide")
@@ -89,6 +90,19 @@ elif page == "Yield Prediction":
     st.title("🔮 Predict Crop Yield")
     st.markdown("Enter the agricultural and climatic parameters below to estimate the expected crop yield (kg/ha).")
     
+    # Load model and preprocessors
+    try:
+        model = joblib.load("best_model.pkl")
+        encoder = joblib.load("encoder.pkl")
+        scaler = joblib.load("scaler.pkl")
+        selector = joblib.load("selector.pkl")
+        high_vif_cols = joblib.load("high_vif_cols.pkl")
+        min_year = joblib.load("min_year.pkl")
+        numerical_cols = joblib.load("numerical_cols.pkl")
+    except Exception as e:
+        st.error(f"Error loading model or preprocessors: {e}")
+        st.stop()
+
     # Input Form
     with st.form("prediction_form"):
         col1, col2, col3 = st.columns(3)
@@ -98,7 +112,8 @@ elif page == "Yield Prediction":
             district = st.selectbox("District", sorted(districts))
             crop_types = df_ml['crop_type'].unique().tolist()
             crop_type = st.selectbox("Crop Type", sorted(crop_types))
-            area = st.number_input("Cultivated Area (Hectares)", min_value=1.0, value=100.0)
+            year = st.number_input("Year (B.S.)", min_value=2060, max_value=2100, value=2080)
+            area = st.number_input("Cultivated Area (Hectares)", min_value=0.1, value=100.0)
             fertilizer = st.number_input("Fertilizer (MT)", min_value=0.0, value=50.0)
             
         with col2:
@@ -110,24 +125,17 @@ elif page == "Yield Prediction":
         with col3:
             rainfall = st.number_input("Avg Rainfall (mm/year)", value=1500.0)
             solar_rad = st.number_input("Solar Radiation (kWh/m2)", value=1800.0)
+            par = st.number_input("Total PAR (MJ/m2)", value=2800.0)
             wind_speed = st.number_input("Wind Speed (m/s)", value=2.5)
             ph_value = st.number_input("Soil pH Value", value=6.5)
             
         submit = st.form_submit_button("Predict Yield")
         
     if submit:
-<<<<<<< HEAD
-        # Note: In a real scenario, we have to save model (e.g., model.pkl) using joblib or pickle
-=======
         # Note: In a real scenario, load your saved model (e.g., model.pkl) using joblib or pickle
->>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
         # model = joblib.load('best_model.pkl')
         # prediction = model.predict(input_data)
         
         # Placeholder for actual prediction logic
         st.success("Data successfully submitted for prediction!")
-<<<<<<< HEAD
-        st.info("💡 **Note to Developer:** To generate real predictions, we have to train model `.pkl` model here using `joblib.load('model.pkl')`, format the user inputs into a DataFrame, and pass it to `model.predict(user_input_df)`. that we will do it later.")
-=======
         st.info("💡 **Note to Developer:** To generate real predictions, load your trained `.pkl` model here using `joblib.load('model.pkl')`, format the user inputs into a DataFrame, and pass it to `model.predict(user_input_df)`.")
->>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
