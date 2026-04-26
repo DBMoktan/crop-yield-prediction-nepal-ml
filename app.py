@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+<<<<<<< HEAD
 import joblib
+=======
+>>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
 import plotly.express as px
 
 # --- App Configuration ---
@@ -10,7 +13,11 @@ st.set_page_config(page_title="Nepal Crop Yield Prediction", page_icon="🌾", l
 # --- Load Data ---
 @st.cache_data
 def load_data():
+<<<<<<< HEAD
     df_ml = pd.read_csv('data/cleaned_dataset_for_ml.csv')
+=======
+    df_ml = pd.read_csv('cleaned_dataset_for_ml.csv')
+>>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
     df_res = pd.read_csv('model_results.csv')
     df_insights = pd.read_csv('data_insights.csv')
     return df_ml, df_res, df_insights
@@ -109,10 +116,18 @@ elif page == "Yield Prediction":
         submit = st.form_submit_button("Predict Yield")
         
     if submit:
+<<<<<<< HEAD
         # Note: In a real scenario, we have to save model (e.g., model.pkl) using joblib or pickle
+=======
+        # Note: In a real scenario, load your saved model (e.g., model.pkl) using joblib or pickle
+>>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
         # model = joblib.load('best_model.pkl')
         # prediction = model.predict(input_data)
         
         # Placeholder for actual prediction logic
         st.success("Data successfully submitted for prediction!")
+<<<<<<< HEAD
         st.info("💡 **Note to Developer:** To generate real predictions, we have to train model `.pkl` model here using `joblib.load('model.pkl')`, format the user inputs into a DataFrame, and pass it to `model.predict(user_input_df)`. that we will do it later.")
+=======
+        st.info("💡 **Note to Developer:** To generate real predictions, load your trained `.pkl` model here using `joblib.load('model.pkl')`, format the user inputs into a DataFrame, and pass it to `model.predict(user_input_df)`.")
+>>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
