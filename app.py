@@ -1,10 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-<<<<<<< HEAD
-import joblib
-=======
->>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
 import plotly.express as px
 import joblib
 
@@ -14,11 +10,7 @@ st.set_page_config(page_title="Nepal Crop Yield Prediction", page_icon="🌾", l
 # --- Load Data ---
 @st.cache_data
 def load_data():
-<<<<<<< HEAD
-    df_ml = pd.read_csv('data/cleaned_dataset_for_ml.csv')
-=======
     df_ml = pd.read_csv('cleaned_dataset_for_ml.csv')
->>>>>>> 4626b0a (feat: implement crop yield prediction pipeline with CatBoost model, data analysis notebooks, and visualization exports)
     df_res = pd.read_csv('model_results.csv')
     df_insights = pd.read_csv('data_insights.csv')
     return df_ml, df_res, df_insights
@@ -132,10 +124,67 @@ elif page == "Yield Prediction":
         submit = st.form_submit_button("Predict Yield")
         
     if submit:
-        # Note: In a real scenario, load your saved model (e.g., model.pkl) using joblib or pickle
-        # model = joblib.load('best_model.pkl')
-        # prediction = model.predict(input_data)
-        
-        # Placeholder for actual prediction logic
-        st.success("Data successfully submitted for prediction!")
-        st.info("💡 **Note to Developer:** To generate real predictions, load your trained `.pkl` model here using `joblib.load('model.pkl')`, format the user inputs into a DataFrame, and pass it to `model.predict(user_input_df)`.")
+        try:
+            # 1. Create Input DataFrame
+            input_data = pd.DataFrame({
+                'Year': [year],
+                'Districts': [district],
+                'Area': [area],
+                'crop_type': [crop_type],
+                'avg_temp_C': [avg_temp],
+                'max_temp_C': [max_temp],
+                'min_temp_C': [min_temp],
+                'avg_relative_humidity': [humidity],
+                'avg_rainfall_mm_per_year': [rainfall],
+                'total_solar_radiation_kWh/m2': [solar_rad],
+                'total_PAR_MJ/m2': [par],
+                'avg_wind_speed_m/s': [wind_speed],
+                'avg_pH_value': [ph_value],
+                'fertilizer_in_MT': [fertilizer]
+            })
+
+            # 2. Feature Engineering
+            epsilon = 1e-9
+            input_data['temp_range'] = input_data['max_temp_C'] - input_data['min_temp_C']
+            input_data['rainfall_per_area'] = input_data['avg_rainfall_mm_per_year'] / (input_data['Area'] + epsilon)
+            input_data['fertilizer_per_area'] = input_data['fertilizer_in_MT'] / (input_data['Area'] + epsilon)
+            input_data['solar_radiation_per_area'] = input_data['total_solar_radiation_kWh/m2'] / (input_data['Area'] + epsilon)
+            input_data['par_per_area'] = input_data['total_PAR_MJ/m2'] / (input_data['Area'] + epsilon)
+            input_data['temp_rainfall_interaction'] = input_data['avg_temp_C'] * input_data['avg_rainfall_mm_per_year']
+            input_data['log_Area'] = np.log1p(input_data['Area'])
+            input_data['log_fertilizer_in_MT'] = np.log1p(input_data['fertilizer_in_MT'])
+            input_data['years_since_start'] = input_data['Year'] - min_year
+
+            # 3. Categorical Encoding
+            categorical_cols = ['Districts', 'crop_type']
+            encoded_cats = encoder.transform(input_data[categorical_cols])
+            encoded_cat_cols = encoder.get_feature_names_out(categorical_cols)
+            encoded_df = pd.DataFrame(encoded_cats, columns=encoded_cat_cols)
+
+            # 4. Combine and Drop columns
+            input_num = input_data.drop(columns=categorical_cols)
+            final_df = pd.concat([input_num, encoded_df], axis=1)
+            
+            # Drop high VIF columns
+            final_df.drop(columns=high_vif_cols, inplace=True, errors='ignore')
+
+            # 5. Scaling (only numerical columns that survived VIF)
+            final_df[numerical_cols] = scaler.transform(final_df[numerical_cols])
+
+            # 6. Feature Selection
+            final_X = selector.transform(final_df)
+
+            # 7. Prediction
+            prediction = model.predict(final_X)[0]
+
+            # Display Result
+            st.success(f"### 🌱 Estimated Crop Yield: **{prediction:.2f} kg/ha**")
+            
+            # Additional UI feedback
+            col1, col2 = st.columns(2)
+            col1.metric("Predicted Yield", f"{prediction:.2f} kg/ha")
+            col2.metric("Target Accuracy (R2)", f"{df_res.iloc[0]['R2 Score']:.4f}" if not df_res.empty else "N/A")
+
+        except Exception as e:
+            st.error(f"Prediction error: {e}")
+            st.info("Ensure all inputs are valid and match the model requirements.")
