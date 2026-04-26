@@ -10,4 +10,4 @@ catboost==1.2.8
 matplotlib==3.10.8
 seaborn
 statsmodels
-shap==0.50.0
+shap==0.44.1
