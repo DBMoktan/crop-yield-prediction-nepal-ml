@@ -36,12 +36,15 @@ You can interact with our live Decision Support System here:
 ## 🛠️ Methodology
 
 ### 1️⃣ Data Preprocessing
+
 - Handling missing values and removing duplicates
 - Outlier detection using IQR
 - Encoding categorical variables and scaling numerical features
 
 ### 2️⃣ Feature Engineering
+
 Derived features added include:
+
 - Temperature range
 - Rainfall per area & Fertilizer per area
 - Solar radiation & PAR per area
@@ -49,7 +52,9 @@ Derived features added include:
 - Log transformations
 
 ### 3️⃣ Model Training
+
 The following models were trained and evaluated:
+
 - Linear Regression, Ridge, Lasso
 - Decision Tree & Random Forest
 - Gradient Boosting, XGBoost, LightGBM, CatBoost
@@ -57,10 +62,13 @@ The following models were trained and evaluated:
 - **Stacking Regressor (Champion Model)**
 
 ### 4️⃣ Hyperparameter Tuning
+
 - Performed using `GridSearchCV` and K-Fold Cross-Validation.
 
 ### 5️⃣ Model Evaluation
+
 **Metrics used:**
+
 - MAE (Mean Absolute Error)
 - MSE (Mean Squared Error)
 - RMSE (Root Mean Squared Error)
