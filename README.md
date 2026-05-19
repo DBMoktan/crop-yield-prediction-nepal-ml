@@ -109,7 +109,7 @@ Contributions, issues, and suggestions are welcome! Please open an issue or subm
 
 ### 👤 Author
 
-**DB Moktan**  
+**Dhana Bahadur Muktan**  
 *MTech IT, Kathmandu University*  
-Machine Learning & Data Science Enthusiast  
+Machine Learning & Data Science Engineer  
 💼 LinkedIn: [db-moktan](https://www.linkedin.com/in/db-moktan/)
