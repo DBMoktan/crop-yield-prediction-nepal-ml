@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Project Custom Igures
+notebooks/plots/
+notebooks/catboost_info/
+notebooks/crop_yield_prediction_modified.py
+catboost_info/
+
