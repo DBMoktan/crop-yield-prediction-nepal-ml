@@ -97,24 +97,6 @@ The following models were trained and evaluated:
 - **Web App:** `Streamlit`
 - **Model Serialization:** `Joblib`
 
-## 🎓 Citation
-
-If you use this repository, the models, or the drafted manuscript sections in your academic research, please cite it as:
-
-```bibtex
-@misc{muktan2026crop,
-  author       = {Muktan, Dhana Bahadur},
-  title        = {Explainable Machine Learning Framework for Cereal Crop Yield Forecasting in Nepal},
-  year         = {2026},
-  publisher    = {GitHub},
-  journal      = {GitHub Repository},
-  howpublished = {\url{https://github.com/DBMoktan/crop-yield-prediction-nepal-ml}}
-}
-```
-
-**APA 7th Edition Style:**  
-Muktan, D. B. (2026). *Explainable Machine Learning Framework for Cereal Crop Yield Forecasting in Nepal* [GitHub Repository]. https://github.com/DBMoktan/crop-yield-prediction-nepal-ml
-
 ## 📜 License
 
 This project is licensed under the MIT License, allowing open use, modification, and distribution with attribution.
