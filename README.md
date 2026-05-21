@@ -79,7 +79,7 @@ The following models were trained and evaluated:
 - **Stacking Regressor** delivered the best overall performance.
 - Feature engineering and scaling significantly improved model accuracy.
 - Climate-related variables (temperature, rainfall, solar radiation) were the most influential.
-- The model achieved **R² ≈ 0.83**, showing strong predictive capability.
+- Enforcing strict, leakage-free chronological validation achieved an outstanding **R² ≈ 0.907**, demonstrating highly generalized crop yield forecasting capability.
 
 ## 🌱 Agricultural Use Cases
 
@@ -96,6 +96,24 @@ The following models were trained and evaluated:
 - **Visualization:** `Matplotlib`, `Seaborn`, `Plotly`
 - **Web App:** `Streamlit`
 - **Model Serialization:** `Joblib`
+
+## 🎓 Citation
+
+If you use this repository, the models, or the drafted manuscript sections in your academic research, please cite it as:
+
+```bibtex
+@misc{muktan2026crop,
+  author       = {Muktan, Dhana Bahadur},
+  title        = {Explainable Machine Learning Framework for Cereal Crop Yield Forecasting in Nepal},
+  year         = {2026},
+  publisher    = {GitHub},
+  journal      = {GitHub Repository},
+  howpublished = {\url{https://github.com/DBMoktan/crop-yield-prediction-nepal-ml}}
+}
+```
+
+**APA 7th Edition Style:**  
+Muktan, D. B. (2026). *Explainable Machine Learning Framework for Cereal Crop Yield Forecasting in Nepal* [GitHub Repository]. https://github.com/DBMoktan/crop-yield-prediction-nepal-ml
 
 ## 📜 License
 
